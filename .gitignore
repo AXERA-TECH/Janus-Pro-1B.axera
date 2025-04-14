@@ -1,0 +1,11 @@
+__pycache__
+*.tar
+build-output/
+*.onnx
+*.pth
+*.pkl
+generated_samples/
+*.axmodel
+tmp/
+Janus-Pro-1B/
+janus_pro_1B_axmodel/
