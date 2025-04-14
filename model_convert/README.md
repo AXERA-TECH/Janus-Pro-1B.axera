@@ -52,7 +52,7 @@ $ git clone https://huggingface.co/deepseek-ai/Janus-Pro-1B
 $ bash download_dataset.sh
 ```
 
-对于每一个模型, 目前对应数据集中仅存放了一帧量化数据, 会对模型性能产生一定的影响, 在后续更新中会逐步补充更多的量化数据.
+执行结束后可以在当前文件夹内看到名为 `imagenet-calib.tar` 的量化文件.
 
 ### 修改配置文件
  

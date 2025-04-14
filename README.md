@@ -2,9 +2,9 @@
 
 > Deepseek Janus-Pro-1B DEMO on Axera.
 
-- 目前支持 `Python` 语言, `C++` 代码在开发中
-- 预编译模型下载 [Google Drive](https://drive.google.com/drive/folders/1ZX_tOjqrVIRWArcalbxjzwrtE9kWzctr?usp=sharing) 或 [百度网盘](https://pan.baidu.com/s/1Ht-q22Lj3KwY_TT-K27lCw?pwd=jhdk)下载
-- 如需自行转换 VIT 模型请参考 [模型转换](/model_convert/README.md)
+- 目前支持 `Python` 语言, `C++` 代码在开发中.
+- 预编译模型可以从 [Google Drive](https://drive.google.com/drive/folders/1ZX_tOjqrVIRWArcalbxjzwrtE9kWzctr?usp=sharing) 或 [百度网盘](https://pan.baidu.com/s/1Ht-q22Lj3KwY_TT-K27lCw?pwd=jhdk)下载.
+- 如需自行导出编译 `VIT` 模型请参考 [模型转换](/model_convert/README.md).
 
 ## 支持平台
 
@@ -37,12 +37,12 @@ $ cd Janus-Pro-1B.axera/python
     ```
 
 - 在开发板上安装配置 `pyaxengine`, [点击跳转下载链接](https://github.com/AXERA-TECH/pyaxengine/releases). 注意板端 `SDK` 最低版本要求:
-    
+
     - AX650 SDK >= 2.18
     - AX620E SDK >= 3.12
     - 执行 `pip3 install axengine-x.x.x-py3-none-any.whl` 安装
 
-将下载后的预编译模型解压到当前文件夹 (*可选, 之后可以手动指定模型路径*), 默认文件夹排布如下:
+将下载后的预编译模型解压到当前文件夹[🔔可选], 默认文件夹排布如下:
 
 ```bash
 .
@@ -168,9 +168,9 @@ $ cd Janus-Pro-1B.axera/python
 $ python3 infer_axmodel_gen.py
 ```
 
-默认 prompt: `"A close-up high-contrast photo of Sydney Opera House sitting next to Eiffel tower, under a blue night sky of roiling energy, exploding yellow stars, and radiating swirls of blue."`
+预设 `prompt` 为: `"A close-up high-contrast photo of Sydney Opera House sitting next to Eiffel tower, under a blue night sky of roiling energy, exploding yellow stars, and radiating swirls of blue."`
 
-生成的图像默认保存在 `./generated_samples/` 文件夹下:
+生成的图像保存在 `./generated_samples/` 文件夹下:
 
 ![output](assets/gen_out_img.jpg)
 
@@ -179,7 +179,7 @@ $ python3 infer_axmodel_gen.py
 Model | Time |
 ---| ---|
 ImageEncoder | 142.682 ms |
-Prefill | 4560.214 ms |
+Prefill TTFT | 4560.214 ms |
 Decoder | 87.48 ms |
 
 其中:
@@ -188,9 +188,9 @@ Decoder | 87.48 ms |
 - `Decoder` 阶段, 每一层的 `llama_layer` 平均耗时 `3.201` ms.
 - `llama_post` 耗时 `10.654 ms`.
 
-模型解码速度为: 1000 / 87.48 = 11.43 token/s.
+模型解码速度为: 1000 / 87.48ms = 11.43 tokens/s.
 
-#### 图像生成任务·推理耗时统计 (one token)
+#### 图像生成任务·推理耗时统计 (1 token)
 
 Model | Time |
 ---| ---|
@@ -198,6 +198,8 @@ llama prefill g1 | 189.565 ms * 24 * 2 |
 llama decode g0 | 3.201 ms * 24 * 2 |
 norm & gen_head | 40 ms
 gen_aligner | 2.0 ms
+
+生成 `384x384` 分辨率的图像默认使用 `576` 个 `token` (1 个 prefill + 575 decode).
 
 最后使用 `gen_vision_model_decode` 获取图像结果, 该模块耗时 `17507.68 ms`.
 
