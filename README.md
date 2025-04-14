@@ -3,7 +3,10 @@
 > Deepseek Janus-Pro-1B DEMO on Axera.
 
 - 目前支持 `Python` 语言, `C++` 代码在开发中.
-- 预编译模型可以从 [Google Drive](https://drive.google.com/drive/folders/1ZX_tOjqrVIRWArcalbxjzwrtE9kWzctr?usp=sharing) 或 [百度网盘](https://pan.baidu.com/s/1Ht-q22Lj3KwY_TT-K27lCw?pwd=jhdk)下载.
+- 预编译模型
+    - [Google Drive](https://drive.google.com/drive/folders/1ZX_tOjqrVIRWArcalbxjzwrtE9kWzctr?usp=sharing) 
+    - [Huggingface](https://huggingface.co/AXERA-TECH/Janus-Pro-1B)
+    - [百度网盘](https://pan.baidu.com/s/1Ht-q22Lj3KwY_TT-K27lCw?pwd=jhdk)
 - 如需自行导出编译 `VIT` 模型请参考 [模型转换](/model_convert/README.md).
 
 ## 支持平台
